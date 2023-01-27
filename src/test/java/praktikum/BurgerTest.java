@@ -22,7 +22,7 @@ public class BurgerTest {
     private final static float PRICE_BUN = 50;
     private final static float PRICE_INGREDIENT = 100;
     private final static float PRICE_BURGER = 200;
-    private final static String EXPECTED_RECEIPT = "(==== bun ====) = sauce ingredient = (==== bun ====)  Price: 200,000000 ";
+    private final static String EXPECTED_RECEIPT = "(==== bun ====) = sauce ingredient = (==== bun ====) Price: 200,000000 ";
 
     @Before
     public void setUp() {
@@ -76,6 +76,6 @@ public class BurgerTest {
         Mockito.when(ingredient.getName()).thenReturn("ingredient");
         Mockito.when(ingredient.getPrice()).thenReturn(PRICE_INGREDIENT);
         Mockito.when(ingredient.getType()).thenReturn(IngredientType.SAUCE);
-        assertEquals("Неправильный чек", EXPECTED_RECEIPT, burger.getReceipt().replaceAll("\r\n", " "));
+        assertEquals("Неправильный чек", EXPECTED_RECEIPT, burger.getReceipt().replaceAll("[\r\n]+", " "));
     }
 }
